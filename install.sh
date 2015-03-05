@@ -3,9 +3,9 @@
 #
 # Script to install my vimrc
 #
-# curl -sL https://... | bash -
+# curl -sL https://github.com/jolth/vimrc/blob/master/install.sh | bash -
 #   or
-# wget -qO- https://... | bash -
+# wget -qO- https://github.com/jolth/vimrc/blob/master/install.sh | bash -
 #
 
 
