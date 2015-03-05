@@ -1,6 +1,6 @@
-# vimrc
+# Vimrc
 
-# Quick Start
+## Quick Start
 - Installation require [Git] and triggers [`git clone`].
 
 - Clone [vimrc]:
