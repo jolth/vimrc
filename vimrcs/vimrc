@@ -18,8 +18,9 @@
 " Ctrl+n            : NERDTreeToggle
 " Ctrl+w+v          : Vertical windows
 " Ctrl+w+s          : Horizontal windows 
-" Ctrl+w,Ctrl+w     : To switch between windows
-" Ctrl+w+[j,k,h,l]  : to switch to adjacent window (intuitively up, down, left, right)
+" Ctrl+w,Ctrl+w     : Switch between windows
+" Ctrl+w+[j,k,h,l]  : Switch to adjacent window (intuitively up, down, left, right)
+" Tab or Ctrl+p     : Supertab, for all your insert completion needs 
 " Ctrl+w+q          : Quit
 "
 "################################################################################

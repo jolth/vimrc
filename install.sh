@@ -8,13 +8,12 @@
 # wget -qO- https://raw.githubusercontent.com/jolth/vimrc/master/install.sh | bash -
 #
 
-
 PWD=$(pwd)
-vimrc=~/.vimrc
+vimrcf=~/.vimrc
+vimd=~/.vim
 
 #       Configure 
 #fast saving:
-#echo "bind -r '\C-s' ; stty -ixon" >> ~/.bashrc;source ~/.bashrc
 echo -e "bind -r '\C-s'\nstty -ixon" >> ~/.bashrc;source ~/.bashrc
 
 # Check that Git exists 
@@ -23,20 +22,23 @@ if [ ! -e $(which git) ]; then
     exit 1
 fi
 
-#if [ -e ~/.vimrc ]; then
-if [ -e $vimrc ]; then
-    #if [ -L ~/.vimrc ]; then
-    #    rm 
-    #fi
+if [ -e $vimrcf ]; then
     echo ".vimrc file exists"
     echo "backup into raw created"
-    mv ~/.vimrc{,_$(date +'%d%m%y%H%M%S')}
+    mv ${vimrcf}{,_$(date +'%d%m%y%H%M%S')} 
 fi
 
-if [ -d ~/.vim ]; then
+if [ -d $vimd ]; then
     echo ".vim directory exist"
+    echo "backup into raw created"
+    mv ${vimd}{,_$(date +'%d%m%y%H%M%S')}
 fi
-               
 
-               
+# Vundle install
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+# Clone my vimrc
+git clone https://github.com/jolth/vimrc.git ~/.vim/
+# Configure and Install
+ln -s ~/.vim/vimrc/vimrcs/vimrc ~/.vimrc
+vim +PluginInstall +qall
