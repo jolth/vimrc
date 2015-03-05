@@ -11,3 +11,5 @@
 
 DIR=$(pwd)
 
+echo "READ"
+
