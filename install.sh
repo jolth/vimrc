@@ -11,5 +11,10 @@
 
 DIR=$(pwd)
 
-echo "READ"
+echo $DIR
+
+
+if [ -e $(which git) ]; then
+    echo "git read"
+fi
 
