@@ -38,7 +38,7 @@ fi
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Clone my vimrc
-git clone https://github.com/jolth/vimrc.git ~/.vim/
+git clone https://github.com/jolth/vimrc.git ~/.vim/vimrc/
 # Configure and Install
 ln -s ~/.vim/vimrc/vimrcs/vimrc ~/.vimrc
 vim +PluginInstall +qall
