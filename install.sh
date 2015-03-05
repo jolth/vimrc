@@ -14,7 +14,16 @@ DIR=$(pwd)
 echo $DIR
 
 
-if [ -e $(which git) ]; then
-    echo "git read"
+#       Configure 
+#fast saving:
+echo "bind -r '\C-s' ; stty -ixon" >> ~/.bashrc;source ~/.bashrc
+
+if [ ! -e $(which git) ]; then
+    echo "Git is required, install please git"
+    exit 1
 fi
+
+               
+
+               
 
