@@ -3,7 +3,6 @@
 ## Quick Start
 - Installation require [Git] and triggers [`git clone`].
 
-- Clone [vimrc]:
-    `git clone https://github.com/jolth/vimrc.git ~/vimrc/`
-
 - Install
+    curl -sL https://raw.githubusercontent.com/jolth/vimrc/master/install.sh | bash -
+
