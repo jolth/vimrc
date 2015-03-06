@@ -221,10 +221,10 @@ set smartcase                   " ... unless they contain at least one capital l
 set scrolloff=3                 " don't show search results as the first line
 
 " Directories for swp files. Debes crear los directorios mkdir ~/.vim/backup
-"set backupdir=~/.vim/backup
-"set directory=~/.vim/backup
-set backupdir=~/.vimbackup
-set directory=~/.vimbackup
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
+"set backupdir=~/.vimbackup
+"set directory=~/.vimbackup
 
 "" Window Splits
 ""Vertical Split : Ctrl+w + v
