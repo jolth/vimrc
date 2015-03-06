@@ -49,3 +49,4 @@ git clone https://github.com/jolth/vimrc.git ~/.myvimrc/
 ln -s ~/.myvimrc/vimrcs/vimrc ~/.vimrc
 mkdir ~/.vim/{colors,backup}
 vim +PluginInstall +qall
+reset
