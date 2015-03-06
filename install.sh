@@ -33,6 +33,7 @@ if [ -d $vimd ]; then
     echo "backup into raw created"
     mv ${vimd}{,_$(date +'%d%m%y%H%M%S')}
 fi
+
 # remove if ~/.myvimrc exist
 if [ -d ~/.myvimrc ]; then
     rm -rf ~/.myvimrc
@@ -42,9 +43,9 @@ fi
 
 # Vundle install
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 # Clone my vimrc
 git clone https://github.com/jolth/vimrc.git ~/.myvimrc/
 # Configure and Install
 ln -s ~/.myvimrc/vimrcs/vimrc ~/.vimrc
+mkdir ~/.vim/{colors,backup}
 vim +PluginInstall +qall
