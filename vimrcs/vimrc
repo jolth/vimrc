@@ -4,29 +4,31 @@
 " Date      : 04/03/2015   
 "
 " Thanks    : Amir Salihefendic [https://github.com/amix/vimrc] 
+"           : https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven
 "
-"                       Install
-" git clone https://github.com/jolth/vimrc.git ~/
+"                       INSTALL
+" :PluginInstall
 "
 "################################################################################
-
+"
 "################################################################################
 "                       Fast Access
 "
 " <F2>              : Enable/Disable highlight the search
-" Ctrl+s            : Save
 " Ctrl+n            : NERDTreeToggle
 " Ctrl+w+v          : Vertical windows
 " Ctrl+w+s          : Horizontal windows 
 " Ctrl+w,Ctrl+w     : Switch between windows
 " Ctrl+w+[j,k,h,l]  : Switch to adjacent window (intuitively up, down, left, right)
 " Tab or Ctrl+p     : Supertab, for all your insert completion needs 
+" zc/zo             : To close a fold and to open one. See :help fold-commands 
 " Ctrl+w+q          : Quit
+" Ctrl+s            : Save
 "
 "################################################################################
-
+"
 "################################################################################
-" > General
+" > GENERAL
 "################################################################################
 " Sets how many lines of history VIM has to remember
 set history=700
@@ -61,7 +63,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-"" Plugins
+"################################################################################
+" > Plugins
+"################################################################################
+
 "surround.vim https://github.com/tpope/vim-surround
 Plugin 'tpope/vim-surround'
 "Supertab https://github.com/ervandew/supertab
