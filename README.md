@@ -5,7 +5,9 @@ My personal vim configuration optimized for Python.
 ## Support Python
 
 your must be verificate support vim to python:
+    
     vim --version|grep --color -i python
+
 you're looking +python
 
 Add support python:
