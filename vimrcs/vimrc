@@ -21,7 +21,8 @@
 " Ctrl+w,Ctrl+w     : Switch between windows
 " Ctrl+w+[j,k,h,l]  : Switch to adjacent window (intuitively up, down, left, right)
 " Tab or Ctrl+p     : Supertab, for all your insert completion needs 
-" zc/zo             : To close a fold and to open one. See :help fold-commands 
+" zc/zo             : To close a fold and to open one. See :help fold-commands (VISUAL MODE)
+"                   : press <Space> to toggle the current fold open/closed.
 " Ctrl+w+q          : Quit
 " Ctrl+s            : Save
 "
@@ -215,7 +216,11 @@ set autoindent      " align the new line indent with the previous line
 
 "" Code Folding
 set foldmethod=indent
+"set foldmethod=manual
 "set foldlevel=4
+"press Space to toggle the current fold open/closed.
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
 
 "" Searching
 set hlsearch                    " highlight matches
