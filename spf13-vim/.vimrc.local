@@ -1,0 +1,11 @@
+"colorscheme ir_black
+"colorscheme peaksea
+"colorscheme molokai
+colorscheme fruity
+
+"" Fast saving
+"Para que funcione debes escribir en consola:
+"echo "bind -r '\C-s' ; stty -ixon" >> ~/.bashrc;source ~/.bashrc
+nmap <c-s> :w<cr>
+"within a document while in 'insert' mode will escape to normal mode
+imap <c-s> <esc>:w<cr>a
