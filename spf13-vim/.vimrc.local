@@ -2,6 +2,7 @@
 "colorscheme peaksea
 "colorscheme molokai
 colorscheme fruity
+"colorscheme ingretu
 
 "" Fast saving
 "Para que funcione debes escribir en consola:
@@ -9,3 +10,20 @@ colorscheme fruity
 nmap <c-s> :w<cr>
 "within a document while in 'insert' mode will escape to normal mode
 imap <c-s> <esc>:w<cr>a
+
+"" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+"" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+"" vim-airline
+"let g:airline_section_b = '%{strftime("%c")}'
+"let g:airline_section_y = 'BN: %{bufnr("%")}'
+
+" To display the status line always
+set laststatus=2
+
+"press Space to toggle the current fold open/closed.
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
