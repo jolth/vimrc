@@ -1,8 +1,8 @@
-"colorscheme ir_black
+colorscheme ir_black
 "colorscheme peaksea
 "colorscheme molokai
-colorscheme fruity
 "colorscheme ingretu
+"colorscheme fruity
 
 "" Fast saving
 "Para que funcione debes escribir en consola:
