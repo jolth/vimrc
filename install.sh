@@ -11,7 +11,7 @@ PWD=$(pwd)
 vimrcf=~/.vimrc
 vimd=~/.vim
 
-#       Configure 
+# Configure 
 #fast saving:
 echo -e "bind -r '\C-s'\nstty -ixon" >> ~/.bashrc;source ~/.bashrc
 
@@ -41,7 +41,7 @@ fi
 #rm -rf ~/.vimbackup
 
 # Vundle install
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # Clone my vimrc
 git clone https://github.com/jolth/vimrc.git ~/.myvimrc/
 # Configure and Install
