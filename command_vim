@@ -1,0 +1,13 @@
+
+:new 			- Create blank buffer.
+:set ft? 		- Check the filetype.
+:set ft=python		- Set the filetype of the current buffer (useful with :new)
+
+Assign a file name when creating the blank buffer:
+:new mynewfile.py
+:edit mynewfile.py
+:tabnew mynewfile.py
+
+:imap 			- To display the currently defined insert mode maps.
+
+

@@ -1,0 +1,17 @@
+"                       Fast Access
+"
+" <F2>              : Enable/Disable highlight the search
+" Ctrl+n            : NERDTreeToggle
+" Ctrl+w+v          : Vertical windows
+" Ctrl+w+s          : Horizontal windows 
+" Ctrl+w,Ctrl+w     : Switch between windows
+" Ctrl+w+[j,k,h,l]  : Switch to adjacent window (intuitively up, down, left, right)
+" Tab or Ctrl+p     : Supertab, for all your insert completion needs 
+" zc/zo             : To close a fold and to open one. See :help fold-commands (VISUAL MODE)
+"                   : Press <Space> to toggle the current fold open/closed.
+" Ctrl+w+q          : Quit
+" Ctrl+s            : Save within a document while in 'insert' mode will escape to normal mode 
+" jk                : Switch of insert mode to normal mode
+" 
+"To display the currently defined insert mode maps, use the 'imap' command without any argument:
+":imap
