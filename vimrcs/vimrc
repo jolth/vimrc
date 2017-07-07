@@ -1,6 +1,6 @@
-" Author    : Jorge A. Toro [jolthgs@gmail.com]
+" Author    : Jorge Toro [jolthgs@gmail.com]
 " Version   : 0.9.1
-" Date      : 05/07/2017   
+" Date      : 2015 - 2017
 "
 "################################################################################
 " > Vundle.vim
@@ -8,6 +8,7 @@
 "to turn off default cache filetype rule.
 "cache filetype rule at runtime interferes
 "with that vundle alters the runtime environment.
+" This must be first, because it changes other options as side effect
 set nocompatible
 filetype off
 "adjust vim's runtime path to include the vundle
@@ -45,7 +46,7 @@ filetype plugin indent on    " required
 " ----------------------------------------------------------------------------
 "  Text Formatting
 " ----------------------------------------------------------------------------
-set history=700            " sets how many lines of history VIM has to remember
+set history=70             " sets how many lines of history VIM has to remember
 set autoread               " set to auto read when a file is changed from the outside
 set encoding=utf-8         " set utf8 as standard encoding and en_US as the standard language
 set autoindent             " automatic indent new lines, align the new line indent with the previous line
@@ -56,7 +57,7 @@ set ffs=unix,dos,mac       " use Unix as the standard file type
 
 set softtabstop=2          " insert/delete # spaces when hitting a TAB/BACKSPACE (for python 'set softtabstop=4')
 set shiftwidth=2  	       " operation >> indents 4 columns; << unindents 4 columns
-set tabstop=4     	       " a hard TAB displays as 4 columns
+set tabstop=4     	       " a hard TAB displays as 4 columns. a tab is four spaces
 set expandtab              " expand tabs to spaces, insert spaces when hitting TABs
 set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
@@ -90,6 +91,8 @@ imap <c-s> <esc>:w<cr>a
 " exit to normal mode with 'jk'
 "inoremap jj <ESC>
 inoremap jk <esc>
+" exit to normal mode with ':w<CR>'
+"inoremap :w<CR> <ESC>:w<CR>i
 
 " You can toggle the syntax on/off with keyup <F7>:
 "map <F7> :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif <CR>
@@ -100,16 +103,31 @@ inoremap jk <esc>
 "  UI
 " ----------------------------------------------------------------------------
 set ruler                  " show the cursor position all the time
-set cursorline		   " Highlight current line
+set showcmd                " display an incomplete command in the lower right corner of the Vim window
+set cursorline		       " highlight current line
 set number                 " line numbers
+
+" ----------------------------------------------------------------------------
+" Visual Cues
+" ----------------------------------------------------------------------------
+"" Search rules:
+set hlsearch               " highlight matches
+map <F2> :set hlsearch!<CR>
+set incsearch              " incremental searching
+set ignorecase             " searches are case insensitive...
+set smartcase              " ... unless they contain at least one capital letter
+set scrolloff=3            " don't show search results as the first line
 
 " ---------------------------------------------------------------------------
 "  My Settings
 " ---------------------------------------------------------------------------
-" filetype detection:
-filetype plugin on
+" filetype detection (use filetype.vim). Determinate the "type" of a file.
+" example: if editing foo.py the command :set ft? should display filetype=python 
+" The file type determines whether any plugins for scripts, indenting rules, or syntax highlighting are loaded.
+"filetype plugin on
 filetype on
-filetype indent on
+"filetype indent on
+filetype indent plugin on
 
 " syntax highliting:
 syntax on
@@ -123,7 +141,23 @@ syntax on
 "colo seoul256
 "set background=dark
 " vim-colorschemes:
-"colorscheme molokai
+colorscheme molokai
 "colorscheme ingretu
-colorscheme antares 
+"colorscheme antares 
 
+" Enable hidden Buffer. This means that you can have unwritten changes to a 
+" file and open a new file using :e, without being forced to write or undo 
+" your changes first. Also, undo buffers and marks are preserved while 
+" the buffer is open:
+set hidden
+
+" Allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" Remember cursor position
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" Fix some tmux issues
+if &term =~ '256color'
+  set t_ut=
+endif
