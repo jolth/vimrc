@@ -1,13 +1,30 @@
 
 :new 			- Create blank buffer.
 :set ft? 		- Check the filetype.
-:set ft=python		- Set the filetype of the current buffer (useful with :new)
+:set ft=python		- Set the filetype of the current buffer (useful with :new).
+
 
 Assign a file name when creating the blank buffer:
 :new mynewfile.py
 :edit mynewfile.py
 :tabnew mynewfile.py
 
-:imap 			- To display the currently defined insert mode maps.
 
+:imap 			- To display the currently defined insert mode maps.
+:ls			- To see a list of current buffers.
+:e ../myfile.py		- To open a new file.
+
+
+
+	* Normal Mode *
+. 			- insert last line.
+yy or Y			- copy line.
+p or P			- paste line.
+$			- last key
+%                       - jumps between pairs of parenthesis ( )'s, { }'s, [ ]'s.
+ZQ			- to exit unconditionally without changing anything (equal :q!)
+ZZ		      	- saves the file and exits. Saves the current file if modified and exits or closes the current window/tab (same as :x but not :wq which writes the file even if it hasn't been modified). 
+Q			- Quit (same as :q)
+:x 			- is one key less than :wq
+:xa			- To exit unconditionally after having written all the modified files in all windows, tabs and hidden buffers (it still won't exit if some files can't be written for a reason or another)
 

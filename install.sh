@@ -46,6 +46,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/jolth/vimrc.git ~/.myvimrc/
 # Configure and Install
 ln -s ~/.myvimrc/vimrcs/vimrc ~/.vimrc
-mkdir ~/.vim/{colors,backup}
+#mkdir ~/.vim/{colors,backup}
+mkdir -p ~/.vim/dirs/{tmp,backups,undos}
 vim +PluginInstall +qall
 reset

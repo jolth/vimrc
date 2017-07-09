@@ -26,6 +26,8 @@ Plugin 'VundleVim/Vundle.vim'
 Bundle 'junegunn/seoul256.vim'
 Bundle 'flazz/vim-colorschemes'
 
+" Yank history navigation. http://www.vim.org/scripts/script.php?script_id=1234
+Bundle 'YankRing.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,6 +60,7 @@ set ffs=unix,dos,mac       " use Unix as the standard file type
 set softtabstop=2          " insert/delete # spaces when hitting a TAB/BACKSPACE (for python 'set softtabstop=4')
 set shiftwidth=2  	       " operation >> indents 4 columns; << unindents 4 columns
 set tabstop=4     	       " a hard TAB displays as 4 columns. a tab is four spaces
+"set shiftround            " round indent to multiple of 'shiftwidth'
 set expandtab              " expand tabs to spaces, insert spaces when hitting TABs
 set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
@@ -84,9 +87,10 @@ let g:mapleader = ","
 
 "" Fast saving
 "$ echo "bind -r '\C-s' ; stty -ixon" >> ~/.bashrc;source ~/.bashrc
-nmap <c-s> :w<cr>
-"within a document while in 'insert' mode will escape to normal mode
-imap <c-s> <esc>:w<cr>a
+" in normal' mode saves the file and exits
+"nmap <c-s> :w<cr>
+" within a document while in 'insert' mode will escape to normal mode
+"imap <c-s> <esc>:w<cr>a
 
 " exit to normal mode with 'jk'
 "inoremap jj <ESC>
@@ -99,6 +103,33 @@ inoremap jk <esc>
 " This appends the current date and time after the cursor:
 "map <F2> a<C-R>=strftime("%c")<CR><Esc>
 
+" normal mode: saves the file and exits. keypress ,,
+nnoremap <leader><leader> :x<cr>
+" insert mode: saves the file and exits. keypress ,,
+inoremap <leader><leader> <esc>:xa<cr>
+" allow quit via single keypress (Q). If you have unsaved buffers, it'll prompt you before exiting.
+map Q :qa<CR>
+
+"put this in your shell: $ echo "bind -r '\C-s' ; stty -ixon" >> ~/.bashrc;source ~/.bashrc
+"Ctrl + s: to save,
+"ctrl + d: to save and exit,
+"ctrl + q: to exit discarding changes.
+inoremap <C-s> <esc>:w<cr>                 " save files
+nnoremap <C-s> :w<cr>
+inoremap <C-d> <esc>:wq!<cr>               " save and exit
+nnoremap <C-d> :wq!<cr>
+inoremap <C-q> <esc>:qa!<cr>               " quit discarding changes
+nnoremap <C-q> :qa!<cr>
+
+" use <leader>l to toggle display of whitespace
+"nmap l :set list!<CR>
+nmap <leader>l :set list!<CR>
+
+" display a buffer displaying the yankring's contents:
+"nnoremap <silent> <F11> :YRShow<CR> 
+nnoremap <silent> <F3> :YRShow<cr>
+inoremap <silent> <F3> <ESC>:YRShow<cr>
+
 " ----------------------------------------------------------------------------
 "  UI
 " ----------------------------------------------------------------------------
@@ -106,6 +137,9 @@ set ruler                  " show the cursor position all the time
 set showcmd                " display an incomplete command in the lower right corner of the Vim window
 set cursorline		       " highlight current line
 set number                 " line numbers
+" change working directory automatically
+" disabled for mapleader that makes this explicit
+"set autochdir             " automatically change window's cwd to file's dir
 
 " ----------------------------------------------------------------------------
 " Visual Cues
@@ -117,6 +151,8 @@ set incsearch              " incremental searching
 set ignorecase             " searches are case insensitive...
 set smartcase              " ... unless they contain at least one capital letter
 set scrolloff=3            " don't show search results as the first line
+set visualbell             " shut the fuck up
+set ttyfast                " indicates a fast terminal connection
 
 " ---------------------------------------------------------------------------
 "  My Settings
@@ -125,8 +161,9 @@ set scrolloff=3            " don't show search results as the first line
 " example: if editing foo.py the command :set ft? should display filetype=python 
 " The file type determines whether any plugins for scripts, indenting rules, or syntax highlighting are loaded.
 "filetype plugin on
-filetype on
+filetype on                " try to detect filetypes
 "filetype indent on
+"filetype plugin indent on    " enable loading indent file for filetype
 filetype indent plugin on
 
 " syntax highliting:
@@ -161,3 +198,55 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 if &term =~ '256color'
   set t_ut=
 endif
+
+" customize the wildmenu
+" wildmenu and wildmode are used for command line completion :color <Tab>
+set wildmenu               " 
+"set wildmode=list:longest
+" autocompletion of files and commands behaves like shell
+" (complete only the common part, list the options that match)
+set wildmode=list:longest,full
+" ignore: .swap, .bak, .pyc, etc files
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg
+set wildignore+=*.dll,*.o,*.exe,*.jpeg,*$py.class,*.class,*/*.dSYM/*,*.dylib
+
+" better backup, swap and undos storage
+set directory=~/.vim/dirs/tmp " directory to place swap files in
+set backup " make backup files
+set backupdir=~/.vim/dirs/backups " where to put backup files
+set undofile " persistent undos - undo after you re-open the file
+set undodir=~/.vim/dirs/undos
+set viminfo+=n~/.vim/dirs/viminfo
+" YankRing.vim ------------------------------
+" store yankring history file there too.
+let g:yankring_history_dir = '~/.vim/dirs/'
+
+" split and tab navigation
+func! GoLeft()
+  let oldw = winnr()
+  silent! exe "normal! \<c-w>h"
+  let neww = winnr()
+  if oldw == neww
+    exe "normal! \gT"
+  endif
+endfunction
+
+func! GoRight()
+  let oldw = winnr()
+  silent! exe "normal! \<c-w>l"
+  let neww = winnr()
+  if oldw == neww
+    exe "normal! \gt"
+  endif
+endfunction
+
+" window-tab navigation
+nnoremap <silent> <C-h> :call GoLeft()<CR>
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <silent> <C-l> :call GoRight()<CR>
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+

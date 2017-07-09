@@ -1,17 +1,36 @@
-"                       Fast Access
-"
+## Fast Access
+
 " <F2>              : Enable/Disable highlight the search
+" <F3>              : display a buffer displaying the yankring's contents (same a :YRShow). YankRing.vim plugin.
+" Shift+w	    : Select word to search
 " Ctrl+n            : NERDTreeToggle
 " Ctrl+w+v          : Vertical windows
-" Ctrl+w+s          : Horizontal windows 
+" Ctrl+w+s          : Horizontal windows
+" Ctrl+w+q          : Close current window
 " Ctrl+w,Ctrl+w     : Switch between windows
 " Ctrl+w+[j,k,h,l]  : Switch to adjacent window (intuitively up, down, left, right)
 " Tab or Ctrl+p     : Supertab, for all your insert completion needs 
 " zc/zo             : To close a fold and to open one. See :help fold-commands (VISUAL MODE)
 "                   : Press <Space> to toggle the current fold open/closed.
-" Ctrl+w+q          : Quit
-" Ctrl+s            : Save within a document while in 'insert' mode will escape to normal mode 
+
+" ,l		    : Use <leader>l to toggle display of whitespace
 " jk                : Switch of insert mode to normal mode
-" 
+" ,,		    : save and exit from normal and insert mode (same as :x)
+" Q		    : Quit within normal mode (same a :q)
+" Ctrl + s	    : to save from normal and insert mode                                                                                        
+" Ctrl + d	    : to save and exit from normal and insert mode                                                                      
+" Ctrl + q	    : to exit discarding changes from normal and insert mode
+" Ctrl + l	    : left window
+" Ctrl + h	    : rigth window
+" Ctrl + j	    : button window
+" Ctrl + k          : top window
+
+
 "To display the currently defined insert mode maps, use the 'imap' command without any argument:
 ":imap
+
+
+
+## Plugins:
+
+YankRing.vim        : Maintains a history of previous yanks, changes and deletes. Help ":h yankring.txt" and ":h yankring-tutorial" or http://www.vim.org/scripts/script.php?script_id=1234
