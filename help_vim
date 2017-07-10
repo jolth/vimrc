@@ -14,12 +14,13 @@
 "                   : Press <Space> to toggle the current fold open/closed.
 
 " ,l		    : Use <leader>l to toggle display of whitespace
+" ,N		    : Toggle line numbers
 " jk                : Switch of insert mode to normal mode
 " ,,		    : save and exit from normal and insert mode (same as :x)
 " Q		    : Quit within normal mode (same a :q)
-" Ctrl + s	    : to save from normal and insert mode                                                                                        
-" Ctrl + d	    : to save and exit from normal and insert mode                                                                      
-" Ctrl + q	    : to exit discarding changes from normal and insert mode
+" Ctrl + s	    : to save, from normal and insert mode
+" Ctrl + d	    : to save and exit, from normal and insert mode
+" Ctrl + q	    : to quit, from normal and insert mode
 " Ctrl + l	    : left window
 " Ctrl + h	    : rigth window
 " Ctrl + j	    : button window

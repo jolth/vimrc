@@ -35,6 +35,11 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
 
+" [vim-airline] Lean & mean status/tabline for vim that's light as air. https://github.com/vim-airline/vim-airline
+Bundle 'vim-airline/vim-airline'
+" [vim-airline-themes] This is the oficial themes vim-airline. https://github.com/vim-airline/vim-airline-themes
+Bundle 'vim-airline/vim-airline-themes'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " Now we can turn our filetype functionality back on
@@ -125,8 +130,10 @@ inoremap <C-s> <esc>:w<cr>                 " save files
 nnoremap <C-s> :w<cr>
 inoremap <C-d> <esc>:wq!<cr>               " save and exit
 nnoremap <C-d> :wq!<cr>
-inoremap <C-q> <esc>:qa!<cr>               " quit discarding changes
-nnoremap <C-q> :qa!<cr>
+inoremap <C-q> <esc>:q<cr>                 " quit
+nnoremap <C-q> :q<cr>
+"inoremap <C-q> <esc>:qa!<cr>               " quit discarding changes
+"nnoremap <C-q> :qa!<cr>
 
 " use <leader>l to toggle display of whitespace
 "nmap l :set list!<CR>
@@ -144,9 +151,13 @@ set ruler                  " show the cursor position all the time
 set showcmd                " display an incomplete command in the lower right corner of the Vim window
 set cursorline		       " highlight current line
 set number                 " line numbers
+" Toggle line numbers
+nnoremap <leader>N :setlocal number!<cr>
+
 " change working directory automatically
 " disabled for mapleader that makes this explicit
 "set autochdir             " automatically change window's cwd to file's dir
+
 
 " ----------------------------------------------------------------------------
 " Visual Cues
@@ -160,6 +171,10 @@ set smartcase              " ... unless they contain at least one capital letter
 set scrolloff=3            " don't show search results as the first line
 set visualbell             " shut the fuck up
 set ttyfast                " indicates a fast terminal connection
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+set showmode               " always show what mode we're currently editing in
 
 " ---------------------------------------------------------------------------
 "  My Settings
@@ -258,7 +273,17 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <silent> <C-l> :call GoRight()<CR>
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
 
+" ---------------------------------------------------------------------------
+"  Plugins Setting and mappings
+" ---------------------------------------------------------------------------
+
+" [vim-airline]
+" smarter tab line
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" [vim-airline-themes]
+" themes: 'badwolf', 'murmur', 'bubblegum'
+" see themes: https://github.com/vim-airline/vim-airline/wiki/Screenshots
+let g:airline_theme='jellybeans'                " configure theme
