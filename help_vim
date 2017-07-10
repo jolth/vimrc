@@ -24,7 +24,7 @@
 " Ctrl + h	    : rigth window
 " Ctrl + j	    : button window
 " Ctrl + k          : top window
-
+" %		    : matching for HTML, LaTeX, and many other languages. Matchit plugin.
 
 "To display the currently defined insert mode maps, use the 'imap' command without any argument:
 ":imap
@@ -34,3 +34,4 @@
 ## Plugins:
 
 YankRing.vim        : Maintains a history of previous yanks, changes and deletes. Help ":h yankring.txt" and ":h yankring-tutorial" or http://www.vim.org/scripts/script.php?script_id=1234
+Matchit.zip	    : extended % matching for HTML, LaTeX, and many other languages. help ":sh matchit.txt" http://www.vim.org/scripts/script.php?script_id=39
