@@ -72,13 +72,13 @@ set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
 set textwidth=79  	       " lines longer than 79 columns will be broken
 set colorcolumn=+1         " color column 80
-"" To highlight tabs that exceed column 81
+" To highlight tabs that exceed column 81
 "highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 "match OverLength /\%>80v.\+/
-"" A nice way of marking just the first character going out of the specified bounds
+" A nice way of marking just the first character going out of the specified bounds
 highlight ColorColumn ctermbg=magenta "set to whatever you like
 call matchadd('ColorColumn', '\%81v', 100) "set column nr
-"" Make window 80 + some for numbers wide
+" Make window 80 + some for numbers wide
 "noremap <Leader>w :let @w=float2nr(log10(line("$")))+82\|:vertical resize <c-r>w<cr>
 
 set virtualedit=block      " allow virtual edit in visual block ..
@@ -87,7 +87,8 @@ set virtualedit=block      " allow virtual edit in visual block ..
 "  Remapping
 " ----------------------------------------------------------------------------
 " With a map leader it's possible to do extra key combinations
-"like <leader>w saves the current file
+" like <leader>w saves the current file
+" Change the mapleader from \ to ,
 let mapleader = ","
 let g:mapleader = ","
 
