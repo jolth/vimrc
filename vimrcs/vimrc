@@ -1,9 +1,8 @@
-" Author    : Jorge Toro [jolthgs@gmail.com]
-" Version   : 0.9.1
-" Date      : 2015 - 2017
+"
+" Copyright (c) 2015-2017 Jorge Toro <jolthgs@gmail.com>
 "
 " ----------------------------------------------------------------------------
-" Vundle.vim
+" Vundle Settings
 " ----------------------------------------------------------------------------
 "to turn off default cache filetype rule.
 "cache filetype rule at runtime interferes
@@ -15,30 +14,34 @@ filetype off
 "location we cloned from GitHub.
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 
-" > Add plugin
-" [colorscheme]
-"Plugin 'tomasr/molokai'
-"Bundle 'altercation/vim-colors-solarized'
-Bundle 'junegunn/seoul256.vim'
-Bundle 'flazz/vim-colorschemes'
+" ----------------------------------------------------------------------------
+"  Plugins
+" ----------------------------------------------------------------------------
 
-" [YankRing] Yank history navigation. http://www.vim.org/scripts/script.php?script_id=1234
-Bundle 'YankRing.vim'
+  " let Vundle manage Vundle, required
+  Plugin 'VundleVim/Vundle.vim'
 
-" [matchit] Latex/XML/HTML tags navigation. https://github.com/tmhedberg/matchit
-Bundle 'tmhedberg/matchit'
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
-endif
+  " [colorscheme]
+  "Plugin 'tomasr/molokai'
+  "Bundle 'altercation/vim-colors-solarized'
+  Bundle 'junegunn/seoul256.vim'
+  Bundle 'flazz/vim-colorschemes'
 
-" [vim-airline] Lean & mean status/tabline for vim that's light as air. https://github.com/vim-airline/vim-airline
-Bundle 'vim-airline/vim-airline'
-" [vim-airline-themes] This is the oficial themes vim-airline. https://github.com/vim-airline/vim-airline-themes
-Bundle 'vim-airline/vim-airline-themes'
+  " [YankRing] Yank history navigation. http://www.vim.org/scripts/script.php?script_id=1234
+  Bundle 'YankRing.vim'
+
+  " [matchit] Latex/XML/HTML tags navigation. https://github.com/tmhedberg/matchit
+  Bundle 'tmhedberg/matchit'
+  " Load matchit.vim, but only if the user hasn't installed a newer version.
+  if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+    runtime! macros/matchit.vim
+  endif
+
+  " [vim-airline] Lean & mean status/tabline for vim that's light as air. https://github.com/vim-airline/vim-airline
+  Bundle 'vim-airline/vim-airline'
+  " [vim-airline-themes] This is the oficial themes vim-airline. https://github.com/vim-airline/vim-airline-themes
+  Bundle 'vim-airline/vim-airline-themes'
 
 
 
@@ -62,7 +65,7 @@ filetype plugin indent on    " required
 " ----------------------------------------------------------------------------
 "  Text Formatting
 " ----------------------------------------------------------------------------
-set history=100            " sets how many lines of history VIM has to remember
+set history=500            " sets how many lines of history VIM has to remember
 set autoread               " set to auto read when a file is changed from the outside
 set encoding=utf-8         " set utf8 as standard encoding and en_US as the standard language
 set autoindent             " automatic indent new lines, align the new line indent with the previous line
