@@ -298,3 +298,4 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " themes: 'badwolf', 'murmur', 'bubblegum'
 " see themes: https://github.com/vim-airline/vim-airline/wiki/Screenshots
 let g:airline_theme='jellybeans'                " configure theme
+let g:airline_powerline_fonts=1
