@@ -1,0 +1,13 @@
+
+# Python
+
+  Bundle 'Vimjas/vim-python-pep8-indent'
+  Bundle 'hdima/python-syntax'
+  Bundle 'klen/python-mode'
+  Bundle 'yssource/python.vim'
+  Bundle 'python_match.vim'
+  Bundle 'pythoncomplete'
+  Bundle 'jmcantrell/vim-virtualenv'
+  Bundle 'fisadev/vim-isort'
+  Bundle 'fisadev/vim-debug.vim'
+  Bundle 'scrooloose/syntastic'
