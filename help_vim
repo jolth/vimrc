@@ -2,6 +2,8 @@
 
  <F2>               : Enable/Disable highlight the search
  <F3>               : display a buffer displaying the yankring's contents (same a :YRShow). YankRing.vim plugin.
+ <F4>               : NumbersToggle
+ <F5>               : NumbersOnOff
  Shift+w	    : Select word to search
  Ctrl+n             : NERDTreeToggle
  Ctrl+w+v           : Vertical windows
@@ -14,7 +16,7 @@
 <space>             : Press <Space> to toggle the current fold open/closed.
 
  ,l		    : Use <leader>l to toggle display of whitespace
- ,N		    : Toggle line numbers
+ ,N		    : Toggle line numbers. (it does not work if you use numbers.vim plugin. your must use <F5> or <F4>)
  jk                 : Switch of insert mode to normal mode
  ,,		    : save and exit from normal and insert mode (same as :x)
  Q		    : Quit within normal mode (same a :q)
