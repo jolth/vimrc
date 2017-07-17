@@ -31,6 +31,10 @@ call vundle#begin()
   " [YankRing] Yank history navigation. http://www.vim.org/scripts/script.php?script_id=1234
   Bundle 'YankRing.vim'
 
+  " ---------- Navegation -----------
+  " Project and file navigation
+  Bundle 'scrooloose/nerdtree'
+
   " [matchit] Latex/XML/HTML tags navigation. https://github.com/tmhedberg/matchit
   Bundle 'tmhedberg/matchit'
   " Load matchit.vim, but only if the user hasn't installed a newer version.
@@ -38,12 +42,20 @@ call vundle#begin()
     runtime! macros/matchit.vim
   endif
 
+  " surroundings parentheses, brackets, quotes, XML tags, and more.
+  Bundle 'tpope/vim-surround'
+
   " [vim-airline] Lean & mean status/tabline for vim that's light as air. https://github.com/vim-airline/vim-airline
   Bundle 'vim-airline/vim-airline'
   " [vim-airline-themes] This is the oficial themes vim-airline. https://github.com/vim-airline/vim-airline-themes
   Bundle 'vim-airline/vim-airline-themes'
 
-
+  " ---------- Python ----------
+  " [vim-python-pep8-indent] "includ into python-mode
+  "Bundle 'Vimjas/vim-python-pep8-indent'
+  " [python-mode]
+  Bundle 'klen/python-mode'
+  "Bundle 'scrooloose/syntastic'
 
 
 " All of your Plugins must be added before the following line
@@ -81,14 +93,14 @@ set tabstop=4     	       " a hard TAB displays as 4 columns. a tab is four spac
 set expandtab              " expand tabs to spaces, insert spaces when hitting TABs
 set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
-set textwidth=79  	       " lines longer than 79 columns will be broken
+set textwidth=80  	       " lines longer than 79 columns will be broken
 set colorcolumn=+1         " color column 80
 " To highlight tabs that exceed column 81
 "highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 "match OverLength /\%>80v.\+/
 " A nice way of marking just the first character going out of the specified bounds
-highlight ColorColumn ctermbg=magenta "set to whatever you like
-call matchadd('ColorColumn', '\%81v', 100) "set column nr
+"highlight ColorColumn ctermbg=magenta "set to whatever you like
+"call matchadd('ColorColumn', '\%81v', 100) "set column nr
 " Make window 80 + some for numbers wide
 "noremap <Leader>w :let @w=float2nr(log10(line("$")))+82\|:vertical resize <c-r>w<cr>
 
@@ -302,3 +314,118 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " see themes: https://github.com/vim-airline/vim-airline/wiki/Screenshots
 let g:airline_theme='jellybeans'                " configure theme
 let g:airline_powerline_fonts=1
+
+" ---------- [Python-Mode] ----------
+" Pymode variables :PymodeTroubleshooting
+" Common fuctionality
+let g:pymode = 1                                 " turn on the whole plugin (default)
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options = 1                         " Setup default python options: nowrap, textwidth, etc
+let g:pymode_options_max_line_length = 79
+let g:pymode_options_colorcolumn = 1
+let g:pymode_paths = []                          " Add paths to `sys.path`. Value is list of path's strings.
+"let g:pymode_quickfix_minheight = 3              " Setup pymode |quickfix| window
+"let g:pymode_quickfix_maxheight = 6              " Setup pymode |quickfix| window
+" Frequent Problems
+" Python version
+"let g:pymode_python = 'python3'                  " to enable python 3 syntax checking
+let g:pymode_python = 'python'                   " to enable python 2 syntax checking (default)
+let g:pymode_rope_lookup_project = 0             " avoid freezig for rope
+" pep8 indents
+let g:pymode_indent=1                            " Pymode supports PEP8-compatible python indent.
+" code folding
+let g:pymode_folding=1                           " Fast and usual python folding in Vim.
+" Vim motion
+let g:pymode_motion = 1                          " Enable pymode-motion
+" Show documentation
+let g:pymode_doc = 1                             " turns on the documentation script
+let g:pymode_doc_bind = 'K'                      " bind keys to show documentation for current word (selection)
+" Support virtualenv
+let g:pymode_virtualenv = 1                      " enable automatic virtualenv detection
+"let g:pymode_virtualenv_path = $VIRTUAL_ENV      " set path to virtualenv manually
+let g:pymode_virtualenv_path = '/home/jolth/virtualenv/py2.7'      " set path to virtualenv manually
+" Run code
+let g:pymode_run = 1
+let g:pymode_run_bind = '<leader>r'
+" breakpoints
+let g:pymode_breakpoint = 1                      " enable functionality
+let g:pymode_breakpoint_bind = '<leader>b'       " bind keys
+let g:pymode_breakpoint_cmd = ''                 " manually set breakpoint command (leave empty for automatic detection)
+
+" Code Checking
+let g:pymode_lint = 1                            " turn on code checking
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let g:pymode_lint_cwindow = 1                    " auto open cwindow (quickfix) if any errors have been found
+let g:pymode_lint_ignore = ''
+let g:pymode_lint_select = ''
+let g:pymode_lint_message = 1                    " show error message if cursor placed at the error line
+let g:pymode_lint_on_fly = 0
+let g:pymode_lint_on_write = 1                   " check code on every save (if file has been modified)
+let g:pymode_lint_unmodified = 0                 " check code on every save (every)
+let g:pymode_lint_signs = 1                      " place error |signs| 
+" Definitions for |signs| 
+    let g:pymode_lint_todo_symbol = 'WW'
+    let g:pymode_lint_comment_symbol = 'CC'
+    let g:pymode_lint_visual_symbol = 'RR'
+    let g:pymode_lint_error_symbol = 'EE'
+    let g:pymode_lint_info_symbol = 'II'
+    let g:pymode_lint_pyflakes_symbol = 'FF'
+
+" Rope support
+" https://github.com/andviro/python-mode#rope-refactoring-library
+let g:pymode_rope = 0                            " turn on the rope script. change to 1 to use rope.
+let g:pymode_rope_completion = 1                 " turn on code completion support in the plugin.
+let g:pymode_rope_complete_on_dot = 1            " turn on autocompletion when typing a period
+let g:pymode_rope_completion_bind = '<C-Space>'  " keymap for autocomplete
+let g:pymode_rope_goto_definition_bind = '<C-c>g' " press on any object in your code you will be moved to definition.
+let g:pymode_rope_goto_definition_cmd = 'new'
+let g:pymode_rope_rename_bind = '<C-c>rr'
+
+" Syntax highlight
+let g:pymode_syntax = 1                          " enable pymode's custom syntax highlighting
+" slower syntax synchronization that is better at handling code blocks in
+" docstrings. Consider disabling this on slower hardware.
+let g:pymode_syntax_slow_sync = 1                " for fast machines 
+" Enable all python highlights 
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_print_as_function=g:pymode_syntax_all            " Highlight "print" as a function
+let g:pymode_syntax_highlight_async_await=g:pymode_syntax_all        " Highlight "async/await" keywords
+let g:pymode_syntax_highlight_equal_operator=g:pymode_syntax_all     " Highlight '=' operator
+let g:pymode_syntax_highlight_stars_operator=g:pymode_syntax_all     " Highlight '*' operator
+let g:pymode_syntax_highlight_self=g:pymode_syntax_all               " Highlight 'self' keyword
+let g:pymode_syntax_indent_errors=g:pymode_syntax_all                " Highlight indent's errors
+let g:pymode_syntax_space_errors=g:pymode_syntax_all                 " Highlight space's errors
+" Highlight string formatting
+let g:pymode_syntax_string_formatting=g:pymode_syntax_all
+let g:pymode_syntax_string_format=g:pymode_syntax_all
+let g:pymode_syntax_string_templates=g:pymode_syntax_all
+let g:pymode_syntax_doctests=g:pymode_syntax_all
+let g:pymode_syntax_builtin_objs=g:pymode_syntax_all                 " Highlight builtin objects (True, False, ...)
+let g:pymode_syntax_builtin_types=g:pymode_syntax_all                " Highlight builtin types (str, list, ...)
+let g:pymode_syntax_highlight_exceptions=g:pymode_syntax_all         " Highlight exceptions (TypeError, ValueError, ...)
+let g:pymode_syntax_docstrings=g:pymode_syntax_all                   " Highlight docstrings as pythonDocstring (otherwise as pythonString)
+
+" highlight 'long' lines (>= 80 symbols) in python files
+augroup vimrc_autocmds
+    autocmd!
+    autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
+    autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
+    autocmd FileType python,rst,c,cpp set nowrap
+    autocmd FileType python,rst,c,cpp set colorcolumn=80
+augroup END
+
+
+" ---------- [NERDTree] ----------
+"autocmd vimenter * NERDTree                      " open a NERDTree automatically when vim starts up
+" open a NERDTree automatically when vim start up if no files were specified:
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" open a NERDTree automatically when vim start up on openind a directory:
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" close vim if the only window left open is a NERDTree:
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" ignore files in NERDTree:
+let NERDTreeIgnore=['\.pyc$', '\.pyo$', '__pycache__$']          
+" mapa s key to open NERDTree:
+map " :NERDTreeToggle<CR>

@@ -1,38 +1,96 @@
 ## Fast Access
 
-" <F2>              : Enable/Disable highlight the search
-" <F3>              : display a buffer displaying the yankring's contents (same a :YRShow). YankRing.vim plugin.
-" Shift+w	    : Select word to search
-" Ctrl+n            : NERDTreeToggle
-" Ctrl+w+v          : Vertical windows
-" Ctrl+w+s          : Horizontal windows
-" Ctrl+w+q          : Close current window
-" Ctrl+w,Ctrl+w     : Switch between windows
-" Ctrl+w+[j,k,h,l]  : Switch to adjacent window (intuitively up, down, left, right)
-" Tab or Ctrl+p     : Supertab, for all your insert completion needs 
-" zc/zo             : To close a fold and to open one. See :help fold-commands (VISUAL MODE)
-"                   : Press <Space> to toggle the current fold open/closed.
+ <F2>               : Enable/Disable highlight the search
+ <F3>               : display a buffer displaying the yankring's contents (same a :YRShow). YankRing.vim plugin.
+ Shift+w	    : Select word to search
+ Ctrl+n             : NERDTreeToggle
+ Ctrl+w+v           : Vertical windows
+ Ctrl+w+s           : Horizontal windows
+ Ctrl+w+q           : Close current window
+ Ctrl+w,Ctrl+w      : Switch between windows
+ Ctrl+w+[j,k,h,l]   : Switch to adjacent window (intuitively up, down, left, right)
+ Tab or Ctrl+p      : Supertab, for all your insert completion needs 
+ zc/zo              : To close a fold and to open one. See :help fold-commands (VISUAL MODE)
+<space>             : Press <Space> to toggle the current fold open/closed.
 
-" ,l		    : Use <leader>l to toggle display of whitespace
-" ,N		    : Toggle line numbers
-" jk                : Switch of insert mode to normal mode
-" ,,		    : save and exit from normal and insert mode (same as :x)
-" Q		    : Quit within normal mode (same a :q)
-" Ctrl + s	    : to save, from normal and insert mode
-" Ctrl + d	    : to save and exit, from normal and insert mode
-" Ctrl + q	    : to quit, from normal and insert mode
-" Ctrl + l	    : left window
-" Ctrl + h	    : rigth window
-" Ctrl + j	    : button window
-" Ctrl + k          : top window
-" %		    : matching for HTML, LaTeX, and many other languages. Matchit plugin.
+ ,l		    : Use <leader>l to toggle display of whitespace
+ ,N		    : Toggle line numbers
+ jk                 : Switch of insert mode to normal mode
+ ,,		    : save and exit from normal and insert mode (same as :x)
+ Q		    : Quit within normal mode (same a :q)
+ Ctrl + s	    : to save, from normal and insert mode
+ Ctrl + d	    : to save and exit, from normal and insert mode
+ Ctrl + q	    : to quit, from normal and insert mode
+ Ctrl + l	    : left window
+ Ctrl + h	    : rigth window
+ Ctrl + j	    : button window
+ Ctrl + k           : top window
+ %		    : matching for HTML, LaTeX, and many other languages. Matchit plugin.
+ "		    : to open NERDTree 
 
 "To display the currently defined insert mode maps, use the 'imap' command without any argument:
 ":imap
 
 
 
-## Plugins:
+# ---------- Python-mode Plugin -----------
+
+K                  : show documentation for current word by `pydoc`.
+,r                 : binds keys to run python code
+,b		   : breakpoints
+<C-C>g	           : press on any object in your code you will be moved to definition. 
+<C-Space>          : code completion and autocompletion when typing a period.
+
+Commands:
+:PymodeDoc <args>   : show documentation 
+
+## Vim motion 
+         
+Support Vim motion (See |operator|) for python objects (such as functions,
+class and methods).
+
+`C` — means class
+`M` — means method or function
+                                                            *pymode-motion-keys*
+
+================  ============================
+Key               Command
+================  ============================
+[[                Jump to previous class or function (normal, visual, operator modes)
+]]                Jump to next class or function  (normal, visual, operator modes)
+[M                Jump to previous class or method (normal, visual, operator modes)
+]M                Jump to next class or method (normal, visual, operator modes)
+aC                Select a class. Ex: vaC, daC, yaC, caC (normal, operator modes)
+iC                Select inner class. Ex: viC, diC, yiC, ciC (normal, operator modes)
+aM                Select a function or method. Ex: vaM, daM, yaM, caM (normal, operator modes)
+iM                Select inner function or method. Ex: viM, diM, yiM, ciM (normal, operator modes)
+================  ============================
+
+## Completion
+
+By default you can use <Ctrl-Space> for autocompletion. The first entry will
+be automatically selected and you can press <Return> to insert the entry in
+your code. <C-X><C-O> and <C-P>/<C-N> works too.
+
+## Undo/Redo changes
+
+Commands:
+
+:PymodeRopeUndo  -- Undo last changes in the project
+:PymodeRopeRedo  -- Redo last changes in the project
+
+
+
+# Plugins:
 
 YankRing.vim        : Maintains a history of previous yanks, changes and deletes. Help ":h yankring.txt" and ":h yankring-tutorial" or http://www.vim.org/scripts/script.php?script_id=1234
 Matchit.zip	    : extended % matching for HTML, LaTeX, and many other languages. help ":sh matchit.txt" http://www.vim.org/scripts/script.php?script_id=39
+Surround.vim        : is all about "surroundings": parentheses, brackets, quotes, XML tags, and more.
+
+
+
+
+
+
+
+

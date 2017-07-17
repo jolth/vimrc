@@ -27,4 +27,17 @@ ZZ		      	- saves the file and exits. Saves the current file if modified and ex
 Q			- Quit (same as :q)
 :x 			- is one key less than :wq
 :xa			- To exit unconditionally after having written all the modified files in all windows, tabs and hidden buffers (it still won't exit if some files can't be written for a reason or another)
+dit			- will delete the text between matching XML tags.
+cit			- will delete the text between matching XML tags and put inser mode.
+ci"			- will delete the text between "".
 
+
+	* Visual Mode *
+it	                - select content between inner XML tags block
+
+
+
+	* Insert Mode *
+
+Ctrl-n 			- to get a list of word suggestions while in insert mode.
+Ctrl-p                  - to autocomplete word and suggestions.
