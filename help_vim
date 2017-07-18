@@ -34,6 +34,13 @@
  Ctrl + j	    : button window
  Ctrl + k           : top window
 
+and navigate windows with meta+arrows:
+
+ <M-Right>
+ <M-Left>
+ <M-Up>
+ <M-Down> 
+
 * navigations from tabs
 
  tn                                 :tabn<CR>
@@ -42,9 +49,7 @@
  tt                                 :tabnew
  ts                                 :tab split<CR>
  <C-S-Right>                        :tabn<CR>
- <C-S-Right> <ESC>                  :tabn<CR>
  <C-S-Left>                         :tabp<CR>
- <C-S-Left> <ESC>                   :tabp<CR>
 
 
 "To display the currently defined insert mode maps, use the 'imap' command without any argument:

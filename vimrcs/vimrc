@@ -88,8 +88,6 @@ filetype plugin indent on    " required
 set history=500            " sets how many lines of history VIM has to remember
 set autoread               " set to auto read when a file is changed from the outside
 set encoding=utf-8         " set utf8 as standard encoding and en_US as the standard language
-set autoindent             " automatic indent new lines, align the new line indent with the previous line
-set smartindent            " be smart about it
 inoremap # X<BS>#
 set nowrap 		           " to display long lines as just one line (i.e. you have to scroll horizontally to see the entire line)
 set ffs=unix,dos,mac       " use Unix as the standard file type
@@ -98,11 +96,14 @@ set softtabstop=2          " insert/delete # spaces when hitting a TAB/BACKSPACE
 set shiftwidth=2  	       " operation >> indents 4 columns; << unindents 4 columns
 set tabstop=4     	       " a hard TAB displays as 4 columns. a tab is four spaces
 "set shiftround            " round indent to multiple of 'shiftwidth'
+set autoindent             " automatic indent new lines, align the new line indent with the previous line
 set expandtab              " expand tabs to spaces, insert spaces when hitting TABs
+set smartindent            " be smart about it. like above but more generic
 set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
 set textwidth=80  	       " lines longer than 79 columns will be broken
 set colorcolumn=+1         " color column 80
+set whichwrap=b,s,h,l,<,>,[,]   " move freely between lines using these commands
 
 " tab length exceptions on some file types
 "autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4
@@ -206,7 +207,7 @@ set ignorecase             " searches are case insensitive...
 set smartcase              " ... unless they contain at least one capital letter
 set scrolloff=3            " don't show search results as the first line
 set visualbell             " shut the fuck up
-set ttyfast                " indicates a fast terminal connection
+set ttyfast                " indicates a fast terminal connection and smoother changes
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -317,6 +318,16 @@ nnoremap <silent> <C-h> :call GoLeft()<CR>
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <silent> <C-l> :call GoRight()<CR>
+
+" navigate windows with meta+arrows
+map <M-Right> <c-w>l
+map <M-Left> <c-w>h
+map <M-Up> <c-w>k
+map <M-Down> <c-w>j
+imap <M-Right> <ESC><c-w>l
+imap <M-Left> <ESC><c-w>h
+imap <M-Up> <ESC><c-w>k
+imap <M-Down> <ESC><c-w>j
 
 " tab navigation mappings
 map tn :tabn<CR>
