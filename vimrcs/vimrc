@@ -205,14 +205,16 @@ map <F2> :set hlsearch!<CR>
 set incsearch              " incremental searching
 set ignorecase             " searches are case insensitive...
 set smartcase              " ... unless they contain at least one capital letter
-set scrolloff=3            " don't show search results as the first line
+set scrolloff=3            " when scrolling, keep cursor 3 lines away from screen border
 set visualbell             " shut the fuck up
 set ttyfast                " indicates a fast terminal connection and smoother changes
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
 set showmode               " always show what mode we're currently editing in
-
+" autocompletion of files and commands behaves like shell
+" (complete only the common part, list the options that match)
+set wildmode=list:longest
 " ---------------------------------------------------------------------------
 "  My Settings
 " ---------------------------------------------------------------------------
@@ -235,7 +237,7 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-" [vim-colors-solarized]
+" ---------- [vim-colors-solarized] ----------
 "syntax enable
 "set background=dark
 "colorscheme solarized
@@ -243,17 +245,37 @@ endif
 " seoul256 (dark):
 " Range:   233 (darkest) ~ 239 (lightest)
 " Default: 237
-let g:seoul256_background = 233
-colo seoul256
+"let g:seoul256_background = 233
+"colo seoul256
 " seoul256 (light):
 " Range:   252 (darkest) ~ 256 (lightest)
 " Default: 253
 "let g:seoul256_background = 256
 "colo seoul256
-" [vim-colorschemes]
+
+function Color_solarized()
+  let g:seoul256_background = 233
+  colo seoul256
+endfunction
+
+" ---------- [vim-colorschemes] ----------
 "colorscheme molokai
 "colorscheme ingretu
 "colorscheme antares 
+
+" use 256 colors when possible
+if (&term =~? 'mlterm\|xterm\|xterm-256\|screen-256') || has('nvim')
+	let &t_Co = 256
+    "colorscheme molokai
+    call Color_solarized()
+else
+    colorscheme delek
+endif
+
+" colors for gvim
+if has('gui_running')
+    colorscheme wombat
+endif
 
 " Enable hidden Buffer. This means that you can have unwritten changes to a 
 " file and open a new file using :e, without being forced to write or undo 
@@ -290,9 +312,21 @@ set backupdir=~/.vim/dirs/backups " where to put backup files
 set undofile " persistent undos - undo after you re-open the file
 set undodir=~/.vim/dirs/undos
 set viminfo+=n~/.vim/dirs/viminfo
-" [YankRing.vim]
+" ---------- [YankRing.vim] ----------
 " store yankring history file there too.
 let g:yankring_history_dir = '~/.vim/dirs/'
+
+" create needed directories if they don't exist
+if !isdirectory(&backupdir)
+    call mkdir(&backupdir, "p")
+endif
+if !isdirectory(&directory)
+    call mkdir(&directory, "p")
+endif
+if !isdirectory(&undodir)
+    call mkdir(&undodir, "p")
+endif
+
 
 " split and tab navigation
 func! GoLeft()
@@ -344,7 +378,7 @@ imap <C-S-Left> <ESC>:tabp<CR>
 "  Plugins Setting and mappings
 " ---------------------------------------------------------------------------
 
-" [vim-airline]
+" ---------- [vim-airline] ----------
 " smarter tab line
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -581,3 +615,10 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+
+
+" TESTING
+
+
+
