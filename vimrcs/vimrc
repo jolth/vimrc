@@ -103,6 +103,12 @@ set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
 set textwidth=80  	       " lines longer than 79 columns will be broken
 set colorcolumn=+1         " color column 80
+
+" tab length exceptions on some file types
+"autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4
+"autocmd FileType htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
+"autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+
 " To highlight tabs that exceed column 81
 "highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 "match OverLength /\%>80v.\+/
@@ -161,6 +167,9 @@ nnoremap <C-q> :q<cr>
 "inoremap <C-q> <esc>:qa!<cr>               " quit discarding changes
 "nnoremap <C-q> :qa!<cr>
 
+" save as sudo
+"ca w!! w !sudo tee "%"
+
 " use <leader>l to toggle display of whitespace
 "nmap l :set list!<CR>
 nmap <leader>l :set list!<CR>
@@ -176,6 +185,7 @@ inoremap <silent> <F3> <ESC>:YRShow<cr>
 set ruler                  " show the cursor position all the time
 set showcmd                " display an incomplete command in the lower right corner of the Vim window
 set cursorline		       " highlight current line
+set laststatus=2           " show a status line even when only one window is shown
 set number                 " line numbers
 " Toggle line numbers
 nnoremap <leader>N :setlocal number!<cr>
@@ -208,11 +218,12 @@ set showmode               " always show what mode we're currently editing in
 " filetype detection (use filetype.vim). Determinate the "type" of a file.
 " example: if editing foo.py the command :set ft? should display filetype=python
 " The file type determines whether any plugins for scripts, indenting rules, or syntax highlighting are loaded.
-"filetype plugin on
+" allow plugins by file type (required for plugins!)
+filetype plugin on         " load plugins
 filetype on                " try to detect filetypes
-"filetype indent on
-"filetype plugin indent on    " enable loading indent file for filetype
-filetype indent plugin on
+filetype indent on
+filetype plugin indent on  " enable loading indent file for filetype
+"filetype indent plugin on
 
 " syntax highliting:
 "syntax on
@@ -307,6 +318,16 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <silent> <C-l> :call GoRight()<CR>
 
+" tab navigation mappings
+map tn :tabn<CR>
+map tp :tabp<CR>
+map tm :tabm
+map tt :tabnew
+map ts :tab split<CR>
+map <C-S-Right> :tabn<CR>
+imap <C-S-Right> <ESC>:tabn<CR>
+map <C-S-Left> :tabp<CR>
+imap <C-S-Left> <ESC>:tabp<CR>
 
 " ---------------------------------------------------------------------------
 "  Plugins Setting and mappings
@@ -527,6 +548,10 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
+" Comment this line to enable autocompletion preview window
+" (displays documentation related to the selected completion option)
+" Disabled by default because preview makes the window flicker
+"set completeopt-=preview
 "let g:neocomplete#enable_auto_select = 1
 "let g:neocomplete#disable_auto_complete = 1
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"

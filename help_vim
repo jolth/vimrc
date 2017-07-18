@@ -16,10 +16,16 @@
 <space>             : Press <Space> to toggle the current fold open/closed.
 
  ,l		    : Use <leader>l to toggle display of whitespace
- ,N		    : Toggle line numbers. (it does not work if you use numbers.vim plugin. your must use <F4>)
+ ,N		    : Toggle line numbers. (it does not work if you use numbers.vim plugin and your are configured :NumbersOnOff)
  jk                 : Switch of insert mode to normal mode
  ,,		    : save and exit from normal and insert mode (same as :x)
  Q		    : Quit within normal mode (same a :q)
+ %		    : matching for HTML, LaTeX, and many other languages. Matchit plugin.
+ "		    : to open NERDTree 
+
+
+* navigate windows
+
  Ctrl + s	    : to save, from normal and insert mode
  Ctrl + d	    : to save and exit, from normal and insert mode
  Ctrl + q	    : to quit, from normal and insert mode
@@ -27,8 +33,19 @@
  Ctrl + h	    : rigth window
  Ctrl + j	    : button window
  Ctrl + k           : top window
- %		    : matching for HTML, LaTeX, and many other languages. Matchit plugin.
- "		    : to open NERDTree 
+
+* navigations from tabs
+
+ tn                                 :tabn<CR>
+ tp                                 :tabp<CR>
+ tm                                 :tabm
+ tt                                 :tabnew
+ ts                                 :tab split<CR>
+ <C-S-Right>                        :tabn<CR>
+ <C-S-Right> <ESC>                  :tabn<CR>
+ <C-S-Left>                         :tabp<CR>
+ <C-S-Left> <ESC>                   :tabp<CR>
+
 
 "To display the currently defined insert mode maps, use the 'imap' command without any argument:
 ":imap
