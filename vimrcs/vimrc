@@ -1,4 +1,7 @@
 "
+" https://github.com/jolth/vimrc
+" version: 2.0
+"
 " Copyright (c) 2015-2017 Jorge Toro <jolthgs@gmail.com>
 "
 " ----------------------------------------------------------------------------
@@ -318,7 +321,9 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " themes: 'badwolf', 'murmur', 'bubblegum'
 " see themes: https://github.com/vim-airline/vim-airline/wiki/Screenshots
 let g:airline_theme='jellybeans'                " configure theme
-let g:airline_powerline_fonts=1
+"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#whitespace#enabled = 1
 
 " ---------- [Python-Mode] ----------
 " Pymode variables :PymodeTroubleshooting
