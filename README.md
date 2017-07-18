@@ -13,6 +13,14 @@ you're looking +python
 Add support python:
 https://jolthgs.wordpress.com/2016/06/11/install-vim-with-support-for-python
 
+## check python with flake8
+
+`sudo pip install flake8`
+
+## check JavaScript with jshint
+
+`sudo npm install -g jshint`
+
 ## Quick Start
 - Installation require [Git] and triggers [`git clone`].
 
