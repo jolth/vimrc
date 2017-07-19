@@ -492,6 +492,8 @@ augroup vimrc_autocmds
 augroup END
 
 " ---------- [Syntastic] ----------
+" show list of errors and warnings on the current file
+nmap <leader>e :Errors<CR>
 "let g:syntastic_python_python_exec='python'
 "nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
 "let g:syntastic_always_populate_loc_list=1
@@ -515,15 +517,19 @@ let g:syntastic_javascript_checkers = ['jshint']       " sudo npm install -g jsh
 " Use flake8
 "let g:syntastic_python_checkers = ['flake8']
 "let g:syntastic_python_flake8_args = '--ignore="E501,E302,E261,E701,E241,E126,E127,E128,E121,W801"'
+" don't put icons on the sign column (it hides the vcs status icons of signify)
+let g:syntastic_enable_signs = 0
 " On by default, turn it off for html
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': ['html'] }
+" Check on buffer open
+let g:syntastic_check_on_open = 1
 " Better :sign interface symbols
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
-" Check on buffer open
-let g:syntastic_check_on_open = 1
+"let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
 
 
 " ---------- [NERDTree] ----------
