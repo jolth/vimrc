@@ -21,7 +21,7 @@
  ,,		    : save and exit from normal and insert mode (same as :x)
  Q		    : Quit within normal mode (same a :q)
  %		    : matching for HTML, LaTeX, and many other languages. Matchit plugin.
- "		    : to open NERDTree 
+ "		    : to open NERDTree
 
 
 * navigate windows
@@ -39,7 +39,7 @@ and navigate windows with meta+arrows:
  <M-Right>
  <M-Left>
  <M-Up>
- <M-Down> 
+ <M-Down>
 
 * navigations from tabs
 
@@ -66,14 +66,14 @@ and navigate windows with meta+arrows:
 K                  : show documentation for current word by `pydoc`.
 ,r                 : binds keys to run python code
 ,b		   : breakpoints
-<C-C>g	           : press on any object in your code you will be moved to definition. 
+<C-C>g	           : press on any object in your code you will be moved to definition.
 <C-Space>          : code completion and autocompletion when typing a period.
 
 Commands:
-:PymodeDoc <args>   : show documentation 
+:PymodeDoc <args>   : show documentation
 
-## Vim motion 
-         
+## Vim motion
+
 Support Vim motion (See |operator|) for python objects (such as functions,
 class and methods).
 

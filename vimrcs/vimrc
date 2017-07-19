@@ -54,6 +54,12 @@ call vundle#begin()
   " [vim-airline-themes] This is the oficial themes vim-airline. https://github.com/vim-airline/vim-airline-themes
   Bundle 'vim-airline/vim-airline-themes'
 
+  " ---------- Git ----------
+  " if git is the only version control system you use:
+  Bundle 'airblade/vim-gitgutter'
+  " if you work with other version control systems:
+  "Bundle 'mhinz/vim-signify'
+
   " ---------- Python ----------
   " [vim-python-pep8-indent] "includ into python-mode
   "Bundle 'Vimjas/vim-python-pep8-indent'
