@@ -19,7 +19,6 @@
  ,N		    : Toggle line numbers. (it does not work if you use numbers.vim plugin and your are configured :NumbersOnOff)
  jk                 : Switch of insert mode to normal mode
  ,,		    : save and exit from normal and insert mode (same as :x)
- Q		    : Quit within normal mode (same a :q)
  %		    : matching for HTML, LaTeX, and many other languages. Matchit plugin.
  "		    : to open NERDTree
 
@@ -28,7 +27,8 @@
 
  Ctrl + s	    : to save, from normal and insert mode
  Ctrl + d	    : to save and exit, from normal and insert mode
- Ctrl + q	    : to quit, from normal and insert mode
+ Ctrl + q	    : to quit discarding changes, from normal and insert mode (same a :qa!)
+ Q		    : Quit within normal mode (same a :q)
  Ctrl + l	    : left window
  Ctrl + h	    : rigth window
  Ctrl + j	    : button window
