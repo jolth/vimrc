@@ -108,6 +108,7 @@ set smartindent            " be smart about it. like above but more generic
 set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
 set textwidth=80  	       " lines longer than 79 columns will be broken
+autocmd FileType html setlocal textwidth=500
 set colorcolumn=+1         " color column 80
 set whichwrap=b,s,h,l,<,>,[,]   " move freely between lines using these commands
 
